@@ -1,0 +1,8 @@
+sqoop export --connect jdbc:mysql://localhost/db1 --username 'acadgild' -P --table 'employee' --export-dir '/user/acadgild/sqoop' --input-fields-terminated-by ',' -m 1 --columns employee_id,employee_name,employee_grade
+
+sqoop import --connect jdbc:mysql://localhost/db1 --username 'acadgild' -P --table 'employee' --target-dir '/user/acadgild/sqoopin' --input-fields-terminated-by ',' -m 1 --columns employee_id,employee_name,employee_grade
+
+
+sqoop import --connect jdbc:mysql://localhost/db1 --username 'acadgild' -P --table 'company' --target-dir '/sqoopout' --hive-import -m 1;
+
+sqoop export --connect jdbc:mysql://localhost/db1 --username 'acadgild' -P --table 'company' --export-dir '/user/acadgild/sqoopouts' --input-fields-terminated-by ',' -m 1 --columns employee_id,employee_name,employee_grade
